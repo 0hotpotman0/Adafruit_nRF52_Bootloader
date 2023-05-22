@@ -44,6 +44,9 @@
 #endif
 
 //------------- IMPLEMENTATION -------------//
+
+#if defined(BUTTON_DFU) || defined(BUTTON_FRESET)
+
 void button_init(uint32_t pin)
 {
   if ( BUTTON_PULL == NRF_GPIO_PIN_PULLDOWN )
@@ -62,6 +65,8 @@ bool button_pressed(uint32_t pin)
   return nrf_gpio_pin_read(pin) == active_state;
 }
 
+#endif
+
 void board_init(void)
 {
   // stop LF clock just in case we jump from application without reset
@@ -70,8 +75,13 @@ void board_init(void)
   // Use Internal OSC to compatible with all boards
   NRF_CLOCK->LFCLKSRC = CLOCK_LFCLKSRC_SRC_RC;
   NRF_CLOCK->TASKS_LFCLKSTART = 1UL;
-  //button_init(BUTTON_DFU);
-  //button_init(BUTTON_FRESET);
+
+#ifdef BUTTON_DFU
+  button_init(BUTTON_DFU);
+#endif
+#ifdef BUTTON_FRESET
+  button_init(BUTTON_FRESET);
+#endif
   NRFX_DELAY_US(100); // wait for the pin state is stable
 
 #if LEDS_NUMBER > 0

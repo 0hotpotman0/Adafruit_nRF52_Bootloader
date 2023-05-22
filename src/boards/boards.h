@@ -37,13 +37,13 @@
 #define UF2_VOLUME_LABEL   "NRF52BOOT  "
 #endif
 
-//#ifndef BUTTON_DFU
-//#define BUTTON_DFU      BUTTON_1
-//#endif
+#if !defined(BUTTON_DFU) && defined(BUTTON_1)
+#define BUTTON_DFU      BUTTON_1
+#endif
 
-//#ifndef BUTTON_FRESET
-//#define BUTTON_FRESET   BUTTON_2
-//#endif
+#if !defined(BUTTON_FRESET) && defined(BUTTON_2)
+#define BUTTON_FRESET   BUTTON_2
+#endif
 
 // The primary LED is usually Red but not in all cases.
 #define LED_PRIMARY 0
@@ -104,13 +104,11 @@ void led_tick(void);
 //--------------------------------------------------------------------+
 // BUTTONS
 //--------------------------------------------------------------------+
-// Make sure we have at least two buttons (DFU + FRESET since DFU+FRST=OTA)
-//#if BUTTONS_NUMBER < 2
-//#error "At least two buttons required in the BSP (see 'BUTTONS_NUMBER')"
-//#endif
 
+#if defined(BUTTON_DFU) || defined(BUTTON_FRESET)
 void button_init(uint32_t pin);
 bool button_pressed(uint32_t pin);
+#endif
 
 bool is_ota(void);
 

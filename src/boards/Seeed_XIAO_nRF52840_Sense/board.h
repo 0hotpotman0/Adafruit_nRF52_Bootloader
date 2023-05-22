@@ -21,30 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#ifndef _SEEED_XIAO_NRF52840_SENSE_H_
-#define _SEEED_XIAO_NRF52840_SENSE_H_
+#ifndef _SEEED_XIAO_NRF52840_SENSE_H
+#define _SEEED_XIAO_NRF52840_SENSE_H
 
 #define _PINNUM(port, pin)    ((port)*32 + (pin))
 
 /*------------------------------------------------------------------*/
 /* LED
  *------------------------------------------------------------------*/
-#define LEDS_NUMBER           1  // red LED
-#define LED_PRIMARY_PIN       _PINNUM(0, 17)
+#define LEDS_NUMBER           1
+#define LED_PRIMARY_PIN       _PINNUM(0, 26)    // USER_RED LED
 #define LED_STATE_ON          0
-
-#define LED_RGB_RED_PIN       _PINNUM(0, 26)
-#define LED_RGB_GREEN_PIN     _PINNUM(0, 30)
-#define LED_RGB_BLUE_PIN      _PINNUM(0, 6)
-#define BOARD_RGB_BRIGHTNESS  0x404040
 
 /*------------------------------------------------------------------*/
 /* BUTTON
  *------------------------------------------------------------------*/
-#define BUTTONS_NUMBER        0//2
-#define BUTTON_1              //_PINNUM(1, 11)  // D2 switch
-#define BUTTON_2              //_PINNUM(1, 12)  // D3 switch
-#define BUTTON_PULL           NRF_GPIO_PIN_PULLUP
+#define BUTTONS_NUMBER        0
 
 //--------------------------------------------------------------------+
 // BLE OTA
@@ -60,10 +52,9 @@
 #define USB_DESC_CDC_ONLY_PID  0x0045
 
 //------------- UF2 -------------//
-#define UF2_PRODUCT_NAME   "Seeed XIAO nRF52840"
+#define UF2_PRODUCT_NAME   "Seeed XIAO nRF52840 Sense"
 #define UF2_VOLUME_LABEL   "XIAO-SENSE"
-#define UF2_BOARD_ID       "Seeed_XIAO_nRF52840_Sense"
+#define UF2_BOARD_ID       "nRF52840-XIAOnRF52840Sense-v1"
 #define UF2_INDEX_URL      "https://www.seeedstudio.com/"
 
-#endif // _ITSY_NRF52840_H
-
+#endif // _SEEED_XIAO_NRF52840_SENSE_H

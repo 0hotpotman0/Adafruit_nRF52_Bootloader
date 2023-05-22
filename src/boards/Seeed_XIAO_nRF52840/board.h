@@ -21,25 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#ifndef _SEEED_XIAO_NRF52840_H_
-#define _SEEED_XIAO_NRF52840_H_
+#ifndef _SEEED_XIAO_NRF52840_H
+#define _SEEED_XIAO_NRF52840_H
 
 #define _PINNUM(port, pin)    ((port)*32 + (pin))
 
 /*------------------------------------------------------------------*/
 /* LED
  *------------------------------------------------------------------*/
-#define LEDS_NUMBER           0//1  // red LED
-#define LED_PRIMARY_PIN       //_PINNUM(0, 24)
+#define LEDS_NUMBER           1
+#define LED_PRIMARY_PIN       _PINNUM(0, 26)    // USER_RED LED
 #define LED_STATE_ON          0
 
 /*------------------------------------------------------------------*/
 /* BUTTON
  *------------------------------------------------------------------*/
-#define BUTTONS_NUMBER        0//2
-#define BUTTON_1              //_PINNUM(1, 11)  // D2 switch
-#define BUTTON_2              //_PINNUM(1, 12)  // D3 switch
-#define BUTTON_PULL           NRF_GPIO_PIN_PULLUP
+#define BUTTONS_NUMBER        0
 
 //--------------------------------------------------------------------+
 // BLE OTA
@@ -57,8 +54,7 @@
 //------------- UF2 -------------//
 #define UF2_PRODUCT_NAME   "Seeed XIAO nRF52840"
 #define UF2_VOLUME_LABEL   "XIAO-BOOT"
-#define UF2_BOARD_ID       "Seeed_XIAO_nRF52840"
+#define UF2_BOARD_ID       "nRF52840-XIAOnRF52840-v1"
 #define UF2_INDEX_URL      "https://www.seeedstudio.com/"
 
-#endif // _ITSY_NRF52840_H
-
+#endif // _SEEED_XIAO_NRF52840_H
